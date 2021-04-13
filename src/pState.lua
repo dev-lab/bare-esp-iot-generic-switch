@@ -1,8 +1,7 @@
 local z = ...
 
 local function tx(s, f)
-	uart.on("data", "\n", f, 0)
-	uart.write(0, s.."\n")
+	require("vGenPin")(s, f)
 end
 
 local function loadP(p, f)
@@ -11,7 +10,6 @@ local function loadP(p, f)
 		return
 	end
 	tx(p.t.."G P"..(p.p or "0"), function(v)
-		uart.on("data")
 		if v and #v > 4 then
 			v = v:sub(5)
 			p.v = tonumber(v)

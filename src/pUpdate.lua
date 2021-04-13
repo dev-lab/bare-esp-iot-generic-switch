@@ -5,12 +5,10 @@ local function isI(c)
 end
 
 local function tx(s, f)
-	uart.on("data", "\n", function(v)
+	require("vGenPin")(s, function(v)
 		v = nil
-		uart.on("data")
 		f()
-	end, 0)
-	uart.write(0, s.."\n")
+	end)
 end
 
 local function storeP(p, f)
