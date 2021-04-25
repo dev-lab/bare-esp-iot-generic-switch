@@ -1,5 +1,5 @@
 {"gpio":[
 {"l":"Button","p":3,"u":1,"t":"D","c":"led"},
 {"l":"Relay","p":6,"t":"D","c":"switch"},
-{"l":"Green%20LED","p":7,"i":1,"t":"D","c":"switch"},
+{"l":"Green%20LED","p":7,"i":1,"t":"D","c":"switch"}
 ]}
