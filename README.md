@@ -31,7 +31,7 @@ The software allows both to set-up and to control ESP8266 device through Web Int
 ## Usage
 1. Flash the ESP8266 module with the NodeMCU firmware as described in [Flashing the firmware](https://nodemcu.readthedocs.io/en/release/flash/) with any tool you like (e.g. [esptool.py](https://github.com/espressif/esptool), [NodeMCU Flasher](https://github.com/nodemcu/nodemcu-flasher) etc.). The custom NodeMCU firmware can be built online with the service: [NodeMCU custom builds](https://nodemcu-build.com/). If your ESP8266 EEPROM is only 512Kb, you have to take extra steps to be sure that firmware is as small as possible, and there is enough space for project files in EEPROM file system. So, build your custom firmware based on 1.5.4.1-final NodeMCU with the only 9 modules selected: `cjson`, `file`, `gpio`, `net`, `node`, `pwm`, `tmr`, `uart`, `wifi`, no TLS, no debug, and take the integer version of it. The firmware I built with the above options is 400004 bytes, which gave me about 78 Kb of space available in my ESP-01 EEPROM file system. In the case if your ESP module goes with larger EEPROM installed (which is the case if you are flashing a Sonoff device), you can build even the most recent NodeMCU version (select the `release` option on online build tool) with more modules selected, just make sure that at least 70Kb of file system space is available when you run NodeMCU. Make sure the following 9 modules are selected when you are building the firmware:
   * `file`;
-  * "GPIO";
+  * `GPIO`;
   * `net`;
   * `node`;
   * `SJSON` (for new NodeMCU; if you build older NodeMCU (1.5.4.1) select `cJSON` instead);
@@ -58,7 +58,10 @@ The software allows both to set-up and to control ESP8266 device through Web Int
 ## The Use Case:
 The software can be used as is with the simple Sonoff devices (checked on Basic Switch and S26 Plug). For other devices, the default [`ports.json`](src/ports.json) may not work, so you will need to modify this file either directly or through ESP Web UI at runtime, using the **Ports** menu. Note, that GPIO pins are usually specified for Sonoff devices, while NodeMCU (and this software) operate with IO indexes. Use the [NodeMCU GPIO](https://nodemcu.readthedocs.io/en/release/modules/gpio/) documentation to map GPIO numbers to port indices. For example, if you find that the relay is connected to GPIO12, the corresponding NodeMCU IO index will be 6 (as you can see in [`ports.json`](src/ports.json)).
 
+## Applications:
+The generic functionality of this software can be adapted to the specific workflow requirements with the help of [**apps**](app/). Check out how to do it [here](app/).
+
 ## [License](LICENSE)
-Copyright (c) 2015-2021 Taras Greben 
+Copyright (c) 2015-2022 Taras Greben 
 
 Licensed under the [Apache License](LICENSE).
